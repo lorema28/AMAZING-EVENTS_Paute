@@ -14,7 +14,7 @@ aux._id=events._id
 return aux
 })
 
-console.log(cardsDetails);
+console.log(cardsDetails)
 
 
 const querySearch = document.location.search

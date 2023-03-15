@@ -1,39 +1,47 @@
-
-const contenedorElementos=document.getElementById("container")
+const container=document.getElementById("container")
 
 const events=data.events
 const currentDate=data.currentDate
+const cardsPastevents = data.events.filter(data => data.date<currentDate)
+//llamar funciones
 
-mostrarTarjetas(events)
+verTarjetasUno(cardsPastevents)
 
+function verTarjetasUno (arrayDatos){
 
-function mostrarTarjetas(arrayDatos) {
+  if (arrayDatos.length==0){
+    container.innerHTML= `<h2 class= display-1 fw-bolder style= "color: aliceblue; text-decoration: none; aling-items:center">No Found<h2>`
+  return
+  }
 
   let tarjetas=""
-  for (let event of arrayDatos){
-    if(event.date<currentDate){
-        tarjetas+= `<div class="card" style="width: 18rem; background-color:transparent; border-color: transparent;" id="container">
-        <img src=" ${event.image}" class="card-img-top"  alt="marathon">
-        <div class="card-body">
-        <h5 class="card-title" style="text-align: center; color: yellow;">${event.name}</h5>
-          <h5 class="card-title" style="text-align: center; color: yellow;"> </h5>
-          <p class="card-text" style="text-align:justify; color: aliceblue; font-size:0.9rem">${event.description} </p>
-          <div class="row d-flex">
-            <div class=" col">
-          <p class="card-text" style="color: aliceblue;"> Price: ${event.price}</p>
-          </div>  
-          <div class="col ">
-          <a href="./details.html?_id=${event._id}" class="btn btn-light" style="background-color: yellow; border-color: transparent;" >Details</a>
-        </div>
-        </div> 
-        </div>
-        </div>`
-
-    }
+  cardsPastevents.forEach(elemento =>{
+    tarjetas+= `<div class="card" style="width: 18rem; background-color:transparent; border-color: transparent;" id="container">
+    <img src=" ${elemento.image}" class="card-img-top"  alt="marathon">
+    <div class="card-body">
+    <h5 class="card-title" style="text-align: center; color: yellow;">${elemento.name}</h5>
+      <h5 class="card-title" style="text-align: center; color: yellow;"> </h5>
+      <p class="card-text" style="text-align:justify; color: aliceblue; font-size:0.9rem">${elemento.description} </p>
+      <div class="row d-flex">
+        <div class=" col">
+      <p class="card-text" style="color: aliceblue;"> Price: ${elemento.price}</p>
+      </div>  
+      <div class="col ">
+      <a href="./details.html?_id=${elemento._id}" class="btn btn-light" style="background-color: yellow; border-color: transparent;" >Details</a>
+    </div>
+    </div> 
+    </div>
+    </div>`
     
+
+  })
+
+  container.innerHTML=tarjetas
+
 }
-container.innerHTML=tarjetas
-}
+
+
+
 
 
 ////checksbox and search
@@ -50,9 +58,9 @@ const input = document.querySelector('input')
 input.addEventListener("input",()=>{
  /*let arrayFiltrado = filtrarPorTexto(events,input.value)
  mostrarTarjetas(arrayFiltrado)*/
-let filtroUno = filtrarPorTexto(events,input.value)
+let filtroUno = filtrarPorTexto(cardsPastevents,input.value)
 let filtroDos = filtrarPorCategorias(filtroUno)
-mostrarTarjetas(filtroDos)
+verTarjetasUno(filtroDos)
 
 })
 
@@ -60,9 +68,9 @@ mostrarTarjetas(filtroDos)
 mostraCheckbox.addEventListener("change",()=>{
  /* let arrayFiltrado = filtrarPorCategorias(events)
   mostrarTarjetas(arrayFiltrado)*/
-  let filtroUno = filtrarPorTexto(events,input.value)
+  let filtroUno = filtrarPorTexto(cardsPastevents,input.value)
   let filtroDos = filtrarPorCategorias(filtroUno)
-  mostrarTarjetas(filtroDos)
+  verTarjetasUno(filtroDos)
 
 })
 
@@ -71,7 +79,7 @@ mostraCheckbox.addEventListener("change",()=>{
 
 //funciones de checkboxes y del search
 
-verCheckboxes(events)
+verCheckboxes(cardsPastevents)
 
 function verCheckboxes(array){
    let arrayCategorys = array.map(events => events.category )
