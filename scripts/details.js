@@ -28,7 +28,7 @@ console.log(eventsCards)
 const contenedorCards= document.getElementById("detailmain")
 
 contenedorCards.innerHTML=`  
-<div class="container mb-3" style=" background-color:rgba(2, 2, 2, 0.529);box-shadow:rgba(255, 255, 0, 0.429) 15px 15px;"> 
+<div class="container mb-3" style=" background-color:rgba(2, 2, 2, 0.529);box-shadow:rgba(255, 255, 0, 0.429) 15px 15px; style="width: 18rem;"> 
 <div class="row g-3" style="align-items: center; justify-content: center; ">
   <div class="col-sm-6 text-center"  style="align-items: center;">
     <img src="${eventsCards.image}" class="img-fluid" alt="image" >

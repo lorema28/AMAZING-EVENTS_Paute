@@ -119,6 +119,12 @@ align-items: center;
 
 }
 
+.image{
+
+color: antiquewhite;
+
+}
+
 .card-body{
 text-align: center;
 justify-content: center;

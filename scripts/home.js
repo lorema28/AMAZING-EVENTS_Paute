@@ -11,7 +11,24 @@ mostrarTarjetas(events)
 function mostrarTarjetas (arrayDatos){
 
   if (arrayDatos.length==0){
-    container.innerHTML= `<h2 class= display-1 fw-bolder style= "color: aliceblue; text-decoration: none; aling-items:center">No Found<h2>`
+    container.innerHTML= `
+    <div class="container text-center">
+  <div class="row">
+    <div class="col">
+      
+    </div>
+    <div class="col">
+    <div>
+    <img src="./assets/img/no-results.png" alt="no no-results" class="image" style=" width: 100px; height: 100px; color: aliceblue;">
+  </div>
+    <p class=fw-bolder style= "color: aliceblue; text-decoration: none; align-items: center;"> No Found<p>
+    </div>
+    <div class="col">
+     
+    </div>
+  </div>
+</div>`
+
   return
   }
 
