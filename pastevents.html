@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazing Events</title>
+    <title>Amazing Events|Past Events</title>
     <link rel="stylesheet" href="./style.css">
     <script src="https://kit.fontawesome.com/953985224b.js" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-<link rel="shortcut icon" href="assets/img/Favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="./assets/img/Favicon.ico" type="image/x-icon">
 </head>
 
     <body id="principal">
@@ -17,8 +17,8 @@
       <header >
         <nav class="navbar navbar-expand-lg navbar-dark">
           <div class="container d-flex bg-black">
-            <a class="navbar-brand" href="index.html">
-              <img src="assets/img/Logo_Amazing_Events.png" alt="Logo" class="logo"></a>
+            <a class="navbar-brand" href="./index.html">
+              <img src="./assets/img/Logo_Amazing_Events.png" alt="Logo" class="logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -34,10 +34,10 @@
                   <a class="nav-link  active" href="#">Past Events</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link " href="contacus.html">Contacs</a>
+                  <a class="nav-link " href="./contacus.html">Contacs</a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="stats.html" >Stats </a>
+                  <a class="nav-link" href="./stats.html" >Stats </a>
                 </li>
               </ul>
             </div>
@@ -51,18 +51,18 @@
 
           <!--<div class="container d-flex flex-wrap">-->
             <div class=" d-flex justify-content-between p-3" style="align-items:center;" >
-              <a class="flex-prev" style= "color: aliceblue;" href="upcomingevents.html"><i class="fa-solid fa-chevron-left"></i></a>
+              <a class="flex-prev" style= "color: aliceblue;" href="./upcomingevents.html"><i class="fa-solid fa-chevron-left"></i></a>
              <a class="title" style= "color: aliceblue; text-decoration: none;" href="./contacus.html"> <h1>Past Events</h1></a>
               <a class="flex-next" style= "color: aliceblue; " href="./contacus.html"><i class="fa-solid fa-chevron-right"></i></a>
                 </div>
            <!--</div>-->
            
            <!--categorias-->
+           <div class="container" style="align-items: center;">
 
-           <div class="container">
-            <div class="row  text-center"> 
+            <div class="row d-flex justify-content-between"> 
          
-             <div class="col-md-9 text-align p-3 " id="checks_boxs">
+             <div class="col-md-8 sm-10 d-flex flex-wrap p-3 align-items" id="checks_boxs">
            <!-- <div class="form-check form-check-inline" >
              <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="checks" value="optiones">
                  <label class="form-check-label" style = "color: yellow;" for="inlineRadio1">Category</label>
@@ -89,14 +89,25 @@
                </div>-->  
          
              </div>
-             <div class="col-md-3 p-3 " >
+             <div class="col-md-4 sm-10 d-flex flex-wrap p-3 ">
                
            <div class=" form-check  form-check-inline">
          
-                 <form class="form-search" id="id_search" >
+                 <form class="form-search" id="id_search">
                    <div class="input-group">
-                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search">
-                     <!--<button id="boton" class="btn btn-warning" style="color:yellow" type="submit" id="submit"><i class="fa fa-search fa-lg"></i></button>-->
+                  
+                      <span class="input-group-text lupita">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" >
+                          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                        </svg>
+                      </span>
+                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search">
+                  
+        
+        
+                  <!---  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search">
+                     <span><i class="fa fa-search fa-lg"></i></span>--> 
+                  <!-- <button id="boton" class="btn btn-warning" style="color:yellow" type="submit" id="submit"><i class="fa fa-search fa-lg"></i></button>-->
                    </div>
                  </form>
                </div>
@@ -107,6 +118,8 @@
          
              </div>
            </div>
+        
+          
          
               <!--cards-->
           <div class=" row d-flex flex-wrap p-3 justify-content-around" id="container">
@@ -220,9 +233,9 @@
                     <div class= "row d-flex  p-3 bg-black">
                   
                       <div class= "col-md-6 text-center ">
-                      <a class="flex-prev" style= "color:blanchedalmond; " href="https://www.facebook.com/"><i class="fa-brands fa-facebook fa-lg"></i></a>
-                      <a class="flex-prev" style= "color: blanchedalmond; " href="https://www.instagram.com/"><i class="fa-brands fa-instagram fa-lg"></i></a>
-                      <a class="flex-prev" style= "color:blanchedalmond; " href="https://www.whatsapp.com/?lang=es"><i class="fa-brands fa-whatsapp fa-lg"></i></a> 
+                      <a class="flex-prev" target="_blank" style= "color:blanchedalmond; " href="https://www.facebook.com/"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                      <a class="flex-prev" target="_blank" style= "color: blanchedalmond; " href="https://www.instagram.com/"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                      <a class="flex-prev" target="_blank" style= "color:blanchedalmond; " href="https://www.whatsapp.com/?lang=es"><i class="fa-brands fa-whatsapp fa-lg"></i></a> 
                       </div>
                   
                   <div class= "col-md-6 text-center">

@@ -1,27 +1,32 @@
 const container=document.getElementById("container")
 
-const events=data.events
-const currentDate=data.currentDate
-const cardsPastevents = data.events.filter(data => data.date<currentDate)
-//llamar funciones
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+.then(response =>response.json())
+.then(datos =>{
+  console.log(datos)
+  cardsPastevents = datos.events.filter(events => events.date< datos.currentDate)
+  verTarjetasUno(cardsPastevents)
+})
+.catch(error=>{
+  console.log(error);
+  })
 
-verTarjetasUno(events)
 
-function verTarjetasUno (arrayDatos){
+function verTarjetasUno(cardsPastevents){
 
-  if (arrayDatos.length==0){
+
+  if (cardsPastevents.length==0){
     container.innerHTML=
     `
     <div class="container text-center">
   <div class="row">
     <div class="col">
-      
     </div>
     <div class="col">
     <div>
     <img src="./assets/img/no-results.png" alt="no no-results" class="image" style=" width: 100px; height: 100px; color: aliceblue;">
   </div>
-    <p class=fw-bolder style= "color: aliceblue; text-decoration: none; align-items: center;"> No Found<p>
+    <p class= fw-bolder style= "color: aliceblue; text-decoration: none; align-items: center;"> No Found<p>
     </div>
     <div class="col">
      
@@ -41,7 +46,7 @@ function verTarjetasUno (arrayDatos){
       <p class="card-text" style="text-align:justify; color: aliceblue; font-size:0.9rem">${elemento.description} </p>
       <div class="row d-flex">
         <div class=" col">
-      <p class="card-text" style="color: aliceblue;"> Price: ${elemento.price}</p>
+      <p class="card-text" style="color: aliceblue;"> Price: $${elemento.price}</p>
       </div>  
       <div class="col ">
       <a href="./details.html?_id=${elemento._id}" class="btn btn-light" style="background-color: yellow; border-color: transparent;" >Details</a>
@@ -58,12 +63,6 @@ function verTarjetasUno (arrayDatos){
 }
 
 
-
-
-
-////checksbox and search
-
-
 const mostraCheckbox = document.getElementById("checks_boxs")
 const mostraSearch = document.getElementById("id_search")
 console.log(mostraSearch)
@@ -75,7 +74,7 @@ const input = document.querySelector('input')
 input.addEventListener("input",()=>{
  /*let arrayFiltrado = filtrarPorTexto(events,input.value)
  mostrarTarjetas(arrayFiltrado)*/
-let filtroUno = filtrarPorTexto(events,input.value)
+let filtroUno = filtrarPorTexto(cardsPastevents,input.value)
 let filtroDos = filtrarPorCategorias(filtroUno)
 verTarjetasUno(filtroDos)
 
@@ -85,21 +84,28 @@ verTarjetasUno(filtroDos)
 mostraCheckbox.addEventListener("change",()=>{
  /* let arrayFiltrado = filtrarPorCategorias(events)
   mostrarTarjetas(arrayFiltrado)*/
-  let filtroUno = filtrarPorTexto(events,input.value)
+  let filtroUno = filtrarPorTexto(cardsPastevents,input.value)
   let filtroDos = filtrarPorCategorias(filtroUno)
   verTarjetasUno(filtroDos)
 
 })
 
 
-
-
 //funciones de checkboxes y del search
 
-verCheckboxes(events)
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+  .then(response =>response.json())
+  .then(datos =>{
+    console.log(datos)
+    CardsEventos = datos.events
+    verCheckboxes(CardsEventos)
+  })
+  .catch(error=>{
+    console.log(error);
+    })
 
 function verCheckboxes(array){
-   let arrayCategorys = array.map( events => events.category )
+   let arrayCategorys = array.map(events=> events.category)
    console.log(arrayCategorys)
    let setCategory = new Set(arrayCategorys)
    console.log(setCategory)

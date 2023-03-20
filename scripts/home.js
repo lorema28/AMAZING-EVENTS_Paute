@@ -1,62 +1,82 @@
+//use la misma función solo llame la api con fetch
 
 const container=document.getElementById("container")
 
-const events=data.events
-const currentDate=data.currentDate
+let CardsEventos
 
-//llamar funciones
-
-mostrarTarjetas(events)
-
-function mostrarTarjetas (arrayDatos){
-
-  if (arrayDatos.length==0){
-    container.innerHTML= `
-    <div class="container text-center">
-  <div class="row">
-    <div class="col">
-      
-    </div>
-    <div class="col">
-    <div>
-    <img src="./assets/img/no-results.png" alt="no no-results" class="image" style=" width: 100px; height: 100px; color: aliceblue;">
-  </div>
-    <p class=fw-bolder style= "color: aliceblue; text-decoration: none; align-items: center;"> No Found<p>
-    </div>
-    <div class="col">
-     
-    </div>
-  </div>
-</div>`
-
-  return
-  }
-
-  let tarjetas=""
-  arrayDatos.forEach(elemento =>{
-    tarjetas+= `<div class="card" style="width: 18rem; background-color:transparent; border-color: transparent;" id="container">
-    <img src=" ${elemento.image}" class="card-img-top"  alt="marathon">
-    <div class="card-body">
-    <h5 class="card-title" style="text-align: center; color: yellow;">${elemento.name}</h5>
-      <h5 class="card-title" style="text-align: center; color: yellow;"> </h5>
-      <p class="card-text" style="text-align:justify; color: aliceblue; font-size:0.9rem">${elemento.description} </p>
-      <div class="row d-flex">
-        <div class=" col">
-      <p class="card-text" style="color: aliceblue;"> Price: ${elemento.price}</p>
-      </div>  
-      <div class="col ">
-      <a href="./details.html?_id=${elemento._id}" class="btn btn-light" style="background-color: yellow; border-color: transparent;" >Details</a>
-    </div>
-    </div> 
-    </div>
-    </div>`
-
+ fetch('https://mindhub-xj03.onrender.com/api/amazing')
+  .then(response =>response.json())
+  .then(datos =>{
+    console.log(datos)
+    CardsEventos = datos.events
+    mostrarTarjetas(CardsEventos)
   })
+  .catch(error=>{
+    console.log(error);
+    })
+ 
+    function mostrarTarjetas (CardsEventos){
+      if (CardsEventos.length==0){
+        container.innerHTML= `
+        <div class="container text-center">
+      <div class="row">
+        <div class="col">
+          
+        </div>
+        <div class="col">
+        <div>
+        <img src="./assets/img/no-results.png" alt="no no-results" class="image" style=" width: 100px; height: 100px; color: aliceblue;">
+      </div>
+        <p class=fw-bolder style= "color: aliceblue; text-decoration: none; align-items: center;"> No Found<p>
+        </div>
+        <div class="col">
+         
+        </div>
+      </div>
+    </div>`
+    
+      return
+      }
 
-  container.innerHTML=tarjetas
+      let tarjetas=""
+      CardsEventos.forEach(elemento =>{
+        tarjetas+= `<div class="card" style="width: 18rem; background-color:transparent; border-color: transparent;" id="container">
+        <img src=" ${elemento.image}" class="card-img-top"  alt="marathon">
+        <div class="card-body">
+        <h5 class="card-title" style="text-align: center; color: yellow;">${elemento.name}</h5>
+          <h5 class="card-title" style="text-align: center; color: yellow;"> </h5>
+          <p class="card-text" style="text-align:justify; color: aliceblue; font-size:0.9rem">${elemento.description} </p>
+          <div class="row d-flex">
+            <div class=" col">
+          <p class="card-text" style="color: aliceblue;"> Price: $${elemento.price}</p>
+          </div>  
+          <div class="col ">
+          <a href="./details.html?_id=${elemento._id}" class="btn btn-light" style="background-color: yellow; border-color: transparent;"color:blanchedalmond; " >Details</a>
+        </div>
+        </div> 
+        </div>
+        </div>`
+    
+      })
+    
+      container.innerHTML=tarjetas
+    
+    }
 
+   /* try{
+const response = await fetch('https://mindhub-xj03.onrender.com/api/amazing')
+console.log(response)
+const datos = await response.json()
+console.log(datos,events);
 }
 
+catch(error){
+  console.log(error);
+}
+
+  }
+
+traerDatos()*/
 
 
 
@@ -74,7 +94,7 @@ const input = document.querySelector('input')
 input.addEventListener("input",()=>{
  /*let arrayFiltrado = filtrarPorTexto(events,input.value)
  mostrarTarjetas(arrayFiltrado)*/
-let filtroUno = filtrarPorTexto(events,input.value)
+let filtroUno = filtrarPorTexto(CardsEventos,input.value)
 let filtroDos = filtrarPorCategorias(filtroUno)
 mostrarTarjetas(filtroDos)
 
@@ -84,21 +104,28 @@ mostrarTarjetas(filtroDos)
 mostraCheckbox.addEventListener("change",()=>{
  /* let arrayFiltrado = filtrarPorCategorias(events)
   mostrarTarjetas(arrayFiltrado)*/
-  let filtroUno = filtrarPorTexto(events,input.value)
+  let filtroUno = filtrarPorTexto(CardsEventos,input.value)
   let filtroDos = filtrarPorCategorias(filtroUno)
   mostrarTarjetas(filtroDos)
 
 })
 
 
-
-
 //funciones de checkboxes y del search
 
-verCheckboxes(events)
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+  .then(response =>response.json())
+  .then(datos =>{
+    console.log(datos)
+    CardsEventos = datos.events
+    verCheckboxes(CardsEventos)
+  })
+  .catch(error=>{
+    console.log(error);
+    })
 
 function verCheckboxes(array){
-   let arrayCategorys = array.map(events => events.category )
+   let arrayCategorys = array.map(events=> events.category)
    console.log(arrayCategorys)
    let setCategory = new Set(arrayCategorys)
    console.log(setCategory)
@@ -116,7 +143,7 @@ let arrayChecks = Array.from(setCategory)
    mostraCheckbox.innerHTML=checkboxes
 }
 
-// esta funcion me sirve para que funcione el search ...lo coloco dentro de input.addEventListener como q si fuera console.log
+// esta funcion me sirve para que funcione el search ...lo coloco dentro de input.addEventListener como que si fuera console.log
 function filtrarPorTexto(arrayDatos, texto){
   let arrayFiltrado = arrayDatos.filter(elemento => elemento.name.toLowerCase().includes(texto.toLowerCase()))
   return arrayFiltrado
@@ -139,27 +166,6 @@ if(arrayCheckeado.length > 0) {
 return array
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -246,102 +252,98 @@ container.innerHTML=cardsCategorys*/
 
 
 
+////////////////////////con data de js.
 
+/*const events=data.events
+const currentDate=data.currentDate*/
 
+ //
 
+/*mostrarTarjetas(events)
 
+function mostrarTarjetas (arrayDatos){
 
-/*
-document.addEventListener("keyup", e=>{
+  if (arrayDatos.length==0){
+    container.innerHTML= `
+    <div class="container text-center">
+  <div class="row">
+    <div class="col">
+      
+    </div>
+    <div class="col">
+    <div>
+    <img src="./assets/img/no-results.png" alt="no no-results" class="image" style=" width: 100px; height: 100px; color: aliceblue;">
+  </div>
+    <p class=fw-bolder style= "color: aliceblue; text-decoration: none; align-items: center;"> No Found<p>
+    </div>
+    <div class="col">
+     
+    </div>
+  </div>
+</div>`
 
-  if (e.target.matches("#buscador")){
-
-      if (e.key ==="Escape")e.target.value = ""
-
-      document.querySelectorAll(".optiones").forEach(events=>{
-events.toLowerCase().includes(e.target.value.toLowerCase())
-            ?events.classList.remove("filtro")
-            :events.classList.add("filtro")
-      })
-
+  return
   }
 
+  let tarjetas=""
+  arrayDatos.forEach(elemento =>{
+    tarjetas+= `<div class="card" style="width: 18rem; background-color:transparent; border-color: transparent;" id="container">
+    <img src=" ${elemento.image}" class="card-img-top"  alt="marathon">
+    <div class="card-body">
+    <h5 class="card-title" style="text-align: center; color: yellow;">${elemento.name}</h5>
+      <h5 class="card-title" style="text-align: center; color: yellow;"> </h5>
+      <p class="card-text" style="text-align:justify; color: aliceblue; font-size:0.9rem">${elemento.description} </p>
+      <div class="row d-flex">
+        <div class=" col">
+      <p class="card-text" style="color: aliceblue;"> Price: $${elemento.price}</p>
+      </div>  
+      <div class="col ">
+      <a href="./details.html?_id=${elemento._id}" class="btn btn-light" style="background-color: yellow; border-color: transparent;"color:blanchedalmond; " >Details</a>
+    </div>
+    </div> 
+    </div>
+    </div>`
 
-})
+  })
 
+  container.innerHTML=tarjetas
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*document.addEventListener("keyup", e=>{
-
-  if (e.target.matches("#search")){
-
-      if (e.key ==="Escape")e.target.value = ""
-
-      document.querySelectorAll(".search").forEach(events=>{
-
-          events.textContent.toLowerCase().includes(e.target.value.toLowerCase())
-            ?events.classList.remove("filtro")
-            :events.classList.add("filtro")
-      })
-
-  }
-
-
-})*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///**const events=data.events
-/*const currentDate=data.currentDate
-
-mostrarTarjetas(events, cardElement)
-
-
-
-function mostrarTarjetas(arrayDatos, contenedor) {
-
-  let tarjetas = " "
-
-for (data of arrayDatos) {
-
-  tarjetas+= 
-}
-contenedor.innerHTML=tarjetas
 }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

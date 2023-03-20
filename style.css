@@ -1,13 +1,15 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;500&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  font-family:Arial, Helvetica, sans-serif;
+    font-family: 'Raleway', sans-serif;
    /* outline: 1px solid #ea1212;*/
    
    }
 
- 
 
 
 #principal{
@@ -22,6 +24,7 @@
 
 h1:hover{
 transform: scale(1.2);
+font-weight: bolder;
 
 }
 
@@ -67,6 +70,10 @@ footer{
 width: 150px;
 
 }
+.input-group-text{
+
+    background-color: yellow !important;
+}
 
 /*.buscar{
     position: relative;
@@ -88,24 +95,69 @@ width: 150px;
 }*/
 
 
+    
 
-table  {
-    background-color: beige;
+.table_1 {
+    width: 100%;
+  overflow: auto;
+  padding-top: 1rem; 
+   margin-top: 0;
+    border-top: 2rem;
+    align-self: center;
+    border-collapse: separate;
+
+    
 }
 
-table tr td {
-    border: 2px solid;
+.table_2{
+width: 100%;
+padding-top: 1rem;
+/*margin: 1rem;
+padding-right: 1rem;
+margin-top: 0;
+border-top: 2rem;*/
+align-self: center;
+border-collapse: separate;
+
+}
+
+
+tbody, td, tfoot, th, thead, tr{
     border-color: black;
     text-align: center;
     padding: 3px;
+    justify-content: center;
+    /*border-color: inherit;*/
+border-style: solid;
+border-width: 0;
   
 }
 
+table tbody td{
+border: 1px solid #fafafa;
+    font-size: 13px;
+    text-align: center;
+}
+thead{
+    color: black;
+}
+tr {
+    background-color: rgba(240, 248, 255, 0.321);
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
 th{
-    background: silver;
+    background: yellow;
 }
 
+td {
+    color:aliceblue;
+}
 
+.table1{
+    background-color: rgba(255, 255, 0, 0.412);
+}
  
 .fa-brands:hover {
 
@@ -140,4 +192,7 @@ justify-content: center;
 
     }*/
 
-
+    .form-check .form-check-input{
+    align-items: center;
+    margin-left: 0.4rem!important;
+}
