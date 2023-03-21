@@ -1,13 +1,23 @@
+ /// llamando a la api  y el archivo json con async await
 
 const container = document.getElementById( 'detailmain' )
 const querySearch = document.location.search
 const id = new URLSearchParams(querySearch).get("_id")
 
 const retornarDatos = async () => {
+  try{
   const response = await fetch('https://mindhub-xj03.onrender.com/api/amazing');
-  const data = await response.json();
-  return data;
-}
+    const data = await response.json();
+    return data;
+  }
+  
+  catch (error) {
+    if(error){
+      let response = await fetch("./json/amazing.json");
+      return await response.json();
+    }
+  }
+} ;
 
 const cardsDetails= async()  => {
   try {
@@ -24,10 +34,10 @@ const cardsDetails= async()  => {
         <h5 class="card-title" style= "color: yellow; text-align:center; font-weight: bold;" >${eventsCards.name}</h5>  
         </div>
         <div class="card-body" style=text-align: center; ">
-            <p class="card-text" style="color: antiquewhite;text-align: justify; font-size: 0.5 px ">${eventsCards.description}</p> 
-            <p class="card-text" style="color: antiquewhite;text-align: justify;"><i class="fa-solid fa-calendar" style="antiquewhite"></i> Date: ${eventsCards.date}</p>
-            <p class="card-text" style="color: antiquewhite;text-align: justify;"><i class="fa-solid fa-location-dot" style="antiquewhite"></i> Place: ${eventsCards.place}</p>
-            <p class="card-text" style="color: antiquewhite; text-align: justify;"><i class="fa-solid fa-dollar-sign"></i> Price: $${eventsCards.price}</p>
+            <p class="card-text" style="color: antiquewhite;text-align: justify; font-size: 0.5 px "> ${eventsCards.description}</p> 
+            <p class="card-text" style="color: antiquewhite;text-align: justify;"> <i class="fa-solid fa-calendar" style="antiquewhite"></i>  Date:  ${eventsCards.date}</p>
+            <p class="card-text" style="color: antiquewhite;text-align: justify;"> <i class="fa-solid fa-location-dot" style="antiquewhite"></i>  Place:  ${eventsCards.place}</p>
+            <p class="card-text" style="color: antiquewhite; text-align: justify;"> <i class="fa-solid fa-dollar-sign"></i> Price: $${eventsCards.price}</p>
           </div>
         </div>
       </div>
@@ -42,7 +52,7 @@ const cardsDetails= async()  => {
 
 cardsDetails();
 
-
+//// código anterior
 /*
 const events= data.events
 const currentDate=data.currentDate

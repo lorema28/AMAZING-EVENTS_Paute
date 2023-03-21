@@ -8,10 +8,11 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing')
   verTarjetasUno(cardsPastevents)
 })
 .catch(error=>{
-  console.log(error);
-  })
-
-
+  if(error){
+    let response = fetch("./json/amazing.json");
+    return  response.json();
+  }
+});
 function verTarjetasUno(cardsPastevents){
 
 
@@ -26,7 +27,8 @@ function verTarjetasUno(cardsPastevents){
     <div>
     <img src="./assets/img/no-results.png" alt="no no-results" class="image" style=" width: 100px; height: 100px; color: aliceblue;">
   </div>
-    <p class= fw-bolder style= "color: aliceblue; text-decoration: none; align-items: center;"> No Found<p>
+    <p class= fw-bolder style= "color: aliceblue; text-decoration: none; align-items: center;"> OOPS!! No Found,
+    try again.<p>
     </div>
     <div class="col">
      
@@ -40,16 +42,15 @@ function verTarjetasUno(cardsPastevents){
   cardsPastevents.forEach(elemento =>{
     tarjetas+= `<div class="card" style="width: 18rem; background-color:transparent; border-color: transparent;" id="container">
     <img src=" ${elemento.image}" class="card-img-top"  alt="marathon">
-    <div class="card-body">
-    <h5 class="card-title" style="text-align: center; color: yellow;">${elemento.name}</h5>
-      <h5 class="card-title" style="text-align: center; color: yellow;"> </h5>
-      <p class="card-text" style="text-align:justify; color: aliceblue; font-size:0.9rem">${elemento.description} </p>
+    <div class="card-body ">
+    <h5 class="card-text" style="text-align: center; color: yellow;">${elemento.name}</h5>
+      <p class="card-text" style="text-align:justify; color: aliceblue; height: 100px; ">${elemento.description} </p>
       <div class="row d-flex">
         <div class=" col">
       <p class="card-text" style="color: aliceblue;"> Price: $${elemento.price}</p>
       </div>  
       <div class="col ">
-      <a href="./details.html?_id=${elemento._id}" class="btn btn-light" style="background-color: yellow; border-color: transparent;" >Details</a>
+      <a href="./details.html?_id=${elemento._id}" class="btn btn-light" style="background-color: yellow; border-color: transparent;"color:blanchedalmond; " >Details</a>
     </div>
     </div> 
     </div>

@@ -1,12 +1,24 @@
- /// llamando a la api con async await
+ /// llamando a la api  y el archivo json con async await
 
+ 
  const retornarDatos = async () => {
-    const response = await fetch('https://mindhub-xj03.onrender.com/api/amazing');
+  try{
+  const response = await fetch('https://mindhub-xj03.onrender.com/api/amazing');
     const data = await response.json();
     return data;
   }
   
-  ////eventos con mayor capacidad 
+  catch (error) {
+    if(error){
+      let response = await fetch("./json/amazing.json");
+      return await response.json();
+    }
+  }
+};
+
+
+
+  ////eventos con mayor capacidad async await
   const llenarTabla= async()  => {
     let eventoMayorCapacidad
     try {
@@ -26,7 +38,7 @@
           
         });
 
-    //// filtrar eventos de upcoming, pastevents y eventstatics
+    //// filtrar los totales de por categoria  de upcoming, pastevents y eventstatics
     const upcoming=data.events.filter(evento=> evento.date>data.currentDate)
     console.log(upcoming)
     const past=data.events.filter(evento=> evento.date<data.currentDate)
@@ -56,7 +68,8 @@
       } catch (error) {
         console.log(error);
     }
-}
+};
+
 
 //// total de eventos por categoria (filtro las propiedades de events (category))
 
@@ -85,6 +98,7 @@ const totalesPorCategoria = (eventos) => {
     }, {});
   };
   
+
   //imprimir tabla
   const rellenarFila=(tabla,result)=>{ for (let category in result) {
     let contenido=`<tr><td>${category}</td>

@@ -11,9 +11,17 @@ let CardsEventos
     CardsEventos = datos.events
     mostrarTarjetas(CardsEventos)
   })
+
   .catch(error=>{
+    if(error){
+      let response = fetch("./json/amazing.json");
+      return  response.json();
+    }
+  });
+
+  /*.catch(error=>{
     console.log(error);
-    })
+    })*/
  
     function mostrarTarjetas (CardsEventos){
       if (CardsEventos.length==0){
@@ -27,7 +35,8 @@ let CardsEventos
         <div>
         <img src="./assets/img/no-results.png" alt="no no-results" class="image" style=" width: 100px; height: 100px; color: aliceblue;">
       </div>
-        <p class=fw-bolder style= "color: aliceblue; text-decoration: none; align-items: center;"> No Found<p>
+        <p class=fw-bolder style= "color: aliceblue; text-decoration: none; align-items: center;"> OOPS!! No Found,
+        try again.<p>
         </div>
         <div class="col">
          
@@ -42,10 +51,9 @@ let CardsEventos
       CardsEventos.forEach(elemento =>{
         tarjetas+= `<div class="card" style="width: 18rem; background-color:transparent; border-color: transparent;" id="container">
         <img src=" ${elemento.image}" class="card-img-top"  alt="marathon">
-        <div class="card-body">
-        <h5 class="card-title" style="text-align: center; color: yellow;">${elemento.name}</h5>
-          <h5 class="card-title" style="text-align: center; color: yellow;"> </h5>
-          <p class="card-text" style="text-align:justify; color: aliceblue; font-size:0.9rem">${elemento.description} </p>
+        <div class="card-body ">
+        <h5 class="card-text" style="text-align: center; color: yellow;">${elemento.name}</h5>
+          <p class="card-text" style="text-align:justify; color: aliceblue; height: 100px; ">${elemento.description} </p>
           <div class="row d-flex">
             <div class=" col">
           <p class="card-text" style="color: aliceblue;"> Price: $${elemento.price}</p>
