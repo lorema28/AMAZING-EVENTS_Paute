@@ -52,7 +52,7 @@ let CardsEventos
         tarjetas+= `<div class="card" style="width: 18rem; background-color:transparent; border-color: transparent;" id="container">
         <img src=" ${elemento.image}" class="card-img-top"  alt="marathon">
         <div class="card-body ">
-        <h5 class="card-text" style="text-align: center; color: yellow;">${elemento.name}</h5>
+        <h5 class="card-card title" style="text-align: center; color: yellow;">${elemento.name}</h5>
           <p class="card-text" style="text-align:justify; color: aliceblue; height: 100px; ">${elemento.description} </p>
           <div class="row d-flex">
             <div class=" col">
