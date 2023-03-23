@@ -40,7 +40,7 @@ function verTarjetasUno(cardsPastevents){
 
   let tarjetas=""
   cardsPastevents.forEach(elemento =>{
-    tarjetas+= `<div class="card" style="width: 18rem; background-color:transparent; border-color: transparent;" id="container">
+    tarjetas+= `<div class="card mt-4" style="width: 18rem; background-color:transparent; border-color: transparent;  box-shadow: 5px 5px 20px rgba(0,0,0,0.2);" id="container">
     <img src=" ${elemento.image}" class="card-img-top"  alt="marathon">
     <div class="card-body ">
     <h5 class="card-title" style="text-align: center; color: yellow;">${elemento.name}</h5>
